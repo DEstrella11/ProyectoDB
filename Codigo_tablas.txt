@@ -1,0 +1,86 @@
+Tabla cliente: 
+CREATE TABLE Cliente( 
+ID_CLIENTE int NOT NULL primary key , 
+nombre_cliente nchar(50) NOT NULL, 
+apellido_cliente nchar(50) NOT NULL, 
+tlf_cliente int NOT NULL, 
+edad_cliente int NOT NULL 
+) 
+
+Tabla cuenta:
+CREATE TABLE Cuenta( 
+id_cuenta int NOT NULL PRIMARY KEY, 
+saldo_cuenta float NULL 
+) 
+
+Tabla movimiento:
+CREATE TABLE Movimiento( 
+id_movimiento int NOT NULL PRIMARY KEY , 
+tipo_movimiento nchar(50) NOT NULL, 
+monto_moviemiento float NOT NULL, 
+cuentaID int NOT NULL, 
+CONSTRAINT Fk_CuentaID FOREIGN KEY (cuentaID) REFERENCES Cuenta(id_cuenta) 
+) 
+
+Tabla tiempo:
+CREATE TABLE Tiempo( 
+id_Tiempo int NOT NULL PRIMARY KEY, 
+fecha_tiempo date NOT NULL, 
+anio_timempo int NOT NULL, 
+trimestre_tiempo int NOT NULL, 
+mes_tiempo varchar(50) NOT NULL, 
+dia_tiempo int NOT NULL 
+) 
+
+Tabla sucursal:
+CREATE TABLE Sucursal( 
+id_sucursal int NOT NULL PRIMARY KEY , 
+nombre_sucursal varchar(50) NOT NULL, 
+ciudad_sucursal varchar(50) NOT NULL, 
+telf_sucursal int NOT NULL 
+) 
+
+Tabla comprobante:
+CREATE TABLE Comprobante( 
+id_Comprobante int NOT NULL PRIMARY KEY , 
+clienteID int NOT NULL, 
+fechaID int NOT NULL, 
+sucursalID int NOT NULL, 
+movimientoID int NOT NULL, 
+CONSTRAINT Fk_ClienteID FOREIGN KEY (clienteID) REFERENCES cliente(id_cliente), 
+CONSTRAINT Fk_FechaID FOREIGN KEY (fechaID) REFERENCES Tiempo(id_tiempo), 
+CONSTRAINT Fk_SucursalID FOREIGN KEY (sucursalID) REFERENCES Sucursal(id_sucursal), 
+CONSTRAINT Fk_MovimientoID FOREIGN KEY (movimientoID) REFERENCES Movimiento(id_movimiento) 
+) 
+ 
+INSERT INTO Cliente (ID_CLIENTE, nombre_cliente, apellido_cliente, tlf_cliente, edad_cliente) VALUES (11111111,'David','Estrella',999999999,22) 
+INSERT INTO Cliente (ID_CLIENTE, nombre_cliente, apellido_cliente, tlf_cliente, edad_cliente) VALUES (222222222,'Henry','Lazo',888888888,22) 
+
+INSERT INTO Cliente (ID_CLIENTE, nombre_cliente, apellido_cliente, tlf_cliente, edad_cliente) VALUES (333333333,'Yordhan','Guerron',777777777,29) 
+INSERT INTO Cliente (ID_CLIENTE, nombre_cliente, apellido_cliente, tlf_cliente, edad_cliente) VALUES (444444444,'Abigail','Fernandez',666666666,18) 
+INSERT INTO Cliente (ID_CLIENTE, nombre_cliente, apellido_cliente, tlf_cliente, edad_cliente) VALUES (555555555,'Alexander','Fierro',555555555,26) 
+INSERT INTO Cliente (ID_CLIENTE, nombre_cliente, apellido_cliente, tlf_cliente, edad_cliente) VALUES (666666666,'Esteban','Martinez',444444444,27) 
+INSERT INTO Cliente (ID_CLIENTE, nombre_cliente, apellido_cliente, tlf_cliente, edad_cliente) VALUES (777777777,'Lizbeth','Flores',333333333,20) 
+INSERT INTO Cliente (ID_CLIENTE, nombre_cliente, apellido_cliente, tlf_cliente, edad_cliente) VALUES (888888888,'Mateo','Davila',222222222,37) 
+INSERT INTO Cliente (ID_CLIENTE, nombre_cliente, apellido_cliente, tlf_cliente, edad_cliente) VALUES (999999999,'Omar','Valenzuela',111111111,47) 
+INSERT INTO Cliente (ID_CLIENTE, nombre_cliente, apellido_cliente, tlf_cliente, edad_cliente) VALUES (101010110,'Karen','Viteri',101010110,28) 
+ 
+INSERT INTO Sucursal(ID_SUCURSAL, NOMBRE_SUCURSAL, CIUDAD_SUCURSAL, TELF_SUCURSAL) VALUES (1,'Condado','Quito',99999999) 
+INSERT INTO Sucursal(ID_SUCURSAL, NOMBRE_SUCURSAL, CIUDAD_SUCURSAL, TELF_SUCURSAL) VALUES (2,'Guasmo','Guayaquil',88888888) 
+INSERT INTO Sucursal(ID_SUCURSAL, NOMBRE_SUCURSAL, CIUDAD_SUCURSAL, TELF_SUCURSAL) VALUES (3,'Obrero','Puyo',7777777) 
+INSERT INTO Sucursal(ID_SUCURSAL, NOMBRE_SUCURSAL, CIUDAD_SUCURSAL, TELF_SUCURSAL) VALUES (4,'Pifo','Quito',66666666) 
+INSERT INTO Sucursal(ID_SUCURSAL, NOMBRE_SUCURSAL, CIUDAD_SUCURSAL, TELF_SUCURSAL) VALUES (5,'Malecon','Guayaquil',55555555) 
+INSERT INTO Sucursal(ID_SUCURSAL, NOMBRE_SUCURSAL, CIUDAD_SUCURSAL, TELF_SUCURSAL) VALUES (6,'Tumbaco','Quito',444444444) 
+INSERT INTO Sucursal(ID_SUCURSAL, NOMBRE_SUCURSAL, CIUDAD_SUCURSAL, TELF_SUCURSAL) VALUES (7,'Pomasqui','Quito',33333333) 
+INSERT INTO Sucursal(ID_SUCURSAL, NOMBRE_SUCURSAL, CIUDAD_SUCURSAL, TELF_SUCURSAL) VALUES (8,'Conocoto','Quito',222222222) 
+ 
+INSERT INTO Cuenta(id_cuenta, saldo_cuenta) VALUES (1,500) 
+INSERT INTO Cuenta(id_cuenta, saldo_cuenta) VALUES (2,2500) 
+INSERT INTO Cuenta(id_cuenta, saldo_cuenta) VALUES (3,4500) 
+INSERT INTO Cuenta(id_cuenta, saldo_cuenta) VALUES (4,310) 
+INSERT INTO Cuenta(id_cuenta, saldo_cuenta) VALUES (5,2500) 
+INSERT INTO Cuenta(id_cuenta, saldo_cuenta) VALUES (6,600) 
+INSERT INTO Cuenta(id_cuenta, saldo_cuenta) VALUES (7,6600) 
+INSERT INTO Cuenta(id_cuenta, saldo_cuenta) VALUES (8,70) 
+INSERT INTO Cuenta(id_cuenta, saldo_cuenta) VALUES (9,800) 
+INSERT INTO Cuenta(id_cuenta, saldo_cuenta) VALUES (10,950) 
